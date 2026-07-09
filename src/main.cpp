@@ -26,16 +26,16 @@ void loop() {
       flagISR = false;
       uint32_t now = millis();
       if(now - debounceTimer >= DEBOUNCE){
-
-      isrCount++;
-      debounceTimer = now;
-      ledState = !ledState;
-       digitalWrite(LED_PIN, ledState);
-      Serial.println(isrCount);
+       
+        if(digitalRead(BTN_PIN) == LOW){
+          isrCount++;
+          debounceTimer = now;
+          ledState = !ledState;
+          digitalWrite(LED_PIN, ledState);
+          Serial.println(isrCount);
+        }
+      
     }
     }
-    
-  
- 
 }
 
